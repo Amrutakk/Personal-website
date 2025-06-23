@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amrutkiran Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Pacifico&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="website.css">
+</head>
+<body>
+
+<header>
+  <div><strong><h1>Hello Student's</h1></strong></div>
+  <div class="nav-buttons">
+    <a href="#home"><button>Home</button></a>
+    <a href="#About"><button>About</button></a>
+    <a href="code.html"><button>Codes</button></a>
+    <a href="leetcode.html"><button>LeetCode</button></a>
+    <a href="#footer"><button>Contact</button></a>
+  </div>
+</header>
+
+<main>
+
+  <!-- Login Popup -->
+  <div id="login-popup" class="popup">
+    <div class="popup-content">
+      <h2>Login Options</h2>
+      <button onclick="userLogin()">User Login</button>
+      <button onclick="userLogout()">Logout</button>
+      <button onclick="openDevLogin()">Developer Login</button>
+      <button onclick="toggleLoginPopup()">Close</button>
+    </div>
+  </div>
+
+  <!-- Developer Login Popup -->
+  <div id="dev-popup" class="popup">
+    <div class="popup-content">
+      <h2>Developer Login</h2>
+      <input type="text" id="devId" placeholder="Enter Developer ID">
+      <input type="password" id="devPass" placeholder="Enter Password">
+      <button onclick="verifyDev()">Login</button>
+      <button onclick="closeDevLogin()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Home Section -->
+  <section id="home" class="tagline-container section-box">
+    <img class="image" src="coding_png.jpg" alt="Coding Image">
+    <div class="text-box">
+      <h2 class="main-heading">
+        Fueling dreams with<br>
+        <span class="highlight">Code & Creativity</span>
+      </h2>
+      <p class="subtext">Consistent | Focus | Innovate | Energetic</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="About" class="about section-box">
+    <div class="about-container">
+      <img src="amrut_img.jpg" alt="Amrutkiran Kshirsagar" class="about-img">
+      <div class="about-text">
+        <h1>Hello All</h1>
+        <h2>I'm Amrutkiran Kshirsagar</h2>
+        <p>
+          A passionate learner with a keen interest in technology, creativity, and personal growth.
+          I enjoy exploring the world of web development, coding, and digital design.
+          My goal is to build meaningful projects and solve real-world problems.
+        </p>
+        <a href="aboutme.html" class="aboutme-btn">
+            <i class="fas fa-user-circle"></i> More About Me
+        </a>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <footer id="footer" class="custom-footer">
+    <div class="footer-content">
+      <div class="contact-info">
+        <p><i class="fas fa-phone-alt"></i> +91 9373799792</p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:amrutkirankshirsagar01@gmail.com">amrutkirankshirsagar01@gmail.com</a></p>
+      </div>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/amrutkiran-kshirsagar-85b80a2b3" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://www.instagram.com/ak_amrutt" target="_blank" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Amrutkiran Kshirsagar. All rights reserved.
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>

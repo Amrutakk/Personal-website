@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f3f4f6;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      height: 100vh;
+    }
+
+    .sidebar {
+      background-color: #1f2937;
+      padding: 2rem 1rem;
+      color: white;
+    }
+
+    .sidebar h2 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .sidebar button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: none;
+      background: #374151;
+      color: white;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .sidebar button:hover {
+      background: #4b5563;
+    }
+
+    .main {
+      padding: 2rem;
+      overflow-y: auto;
+    }
+
+    .section {
+      display: none;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    textarea {
+      width: 100%;
+      height: 200px;
+      margin-bottom: 1rem;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: monospace;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Developer Dashboard</h1>
+    <button class="btn" onclick="logout()">Logout</button>
+  </header>
+  <div class="dashboard">
+    <div class="sidebar">
+      <h2>Options</h2>
+      <button onclick="showSection('about')">Edit About</button>
+      <button onclick="showSection('addCode')">Add Code</button>
+      <button onclick="showSection('addLeetCode')">Add LeetCode</button>
+      <button onclick="showSection('editDelete')">Edit/Delete Code</button>
+    </div>
+    <div class="main">
+      <div id="about" class="section">
+        <h2>Edit About</h2>
+        <textarea placeholder="Write your updated about info here..."></textarea>
+        <button class="btn">Update</button>
+      </div>
+
+      <div id="addCode" class="section">
+        <h2>Add dCode</h2>
+        <input type="text" placeholder="Enter Code Title">
+        <textarea placeholder="Write your dCode here..."></textarea>
+        <button class="btn">Add Code</button>
+      </div>
+
+      <div id="addLeetCode" class="section">
+        <h2>Add LeetCode</h2>
+        <input type="text" placeholder="Enter LeetCode Title">
+        <textarea placeholder="Write your LeetCode here..."></textarea>
+        <button class="btn">Add LeetCode</button>
+      </div>
+
+      <div id="editDelete" class="section">
+        <h2>Edit/Delete Code</h2>
+        <p>(Feature Coming Soon – You can load and edit/delete existing code here)</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(sec => sec.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    function logout() {
+      alert("Logged out!");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

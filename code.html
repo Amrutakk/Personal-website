@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Code Library with Search & Logic</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      margin: 0;
+      display: flex;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background-color: #222;
+      color: white;
+      padding-top: 40px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    }
+
+    .sidebar h3 {
+      margin-left: 20px;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar button {
+      width: 90%;
+      margin: 10px auto;
+      display: block;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      transition: 0.3s;
+    }
+
+    .sidebar button:hover {
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      transform: scale(1.03);
+    }
+
+    .main-content {
+      margin-left: 270px;
+      padding: 30px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    .output {
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .logic {
+      display: none;
+      margin-top: 10px;
+      background: #eef;
+      padding: 10px;
+      border-left: 5px solid #00bcd4;
+      border-radius: 8px;
+    }
+
+    .toggle-btn {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .toggle-btn:hover {
+      background: #0196a3;
+    }
+
+    .search-box {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-box input {
+      width: 60%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #aaa;
+    }
+
+    iframe {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    img {
+      max-width: 100%;
+      margin: 15px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h3>Sections</h3>
+    <button onclick="showSection('python')"> Python</button>
+    <button onclick="showSection('java')"> Java</button>
+    <button onclick="showSection('project')"> Projects</button>
+    <button onclick="showSection('ccna')"> CCNA</button>
+  </div>
+
+  <div class="main-content">
+
+    <!-- Python -->
+    <div id="python" class="section active">
+      <h2>Python Examples</h2>
+      <div class="search-box">
+        <input type="text" placeholder="Search Python..." onkeyup="search(this, 'python')" />
+      </div>
+
+      <div class="container">
+        <b>Example 1:</b> Print right-angle triangle
+        <pre>for i in range(5):
+  for j in range(i+1):
+    print("*", end=" ")
+  print()</pre>
+        <button class="toggle-btn" onclick="toggleLogic(this)">Show Logic</button>
+        <div class="logic">Nested loops print increasing number of stars.</div>
+        <div class="output">Output:<br>*<br>* *<br>* * *<br>* * * *<br>* * * * *</div>
+      </div>
+
+      <div class="container">
+        <b>Example 2:</b> Fibonacci series
+        <pre>a, b = 0, 1
+for _ in range(5):
+  print(a, end=" ")
+  a, b = b, a + b</pre>
+        <button class="toggle-btn" onclick="toggleLogic(this)">Show Logic</button>
+        <div class="logic">Prints first 5 Fibonacci numbers using loop & swapping.</div>
+        <div class="output">Output: 0 1 1 2 3</div>
+      </div>
+       <p>More codes comming soon...!</p>
+    </div>
+
+    <!-- Java -->
+    <div id="java" class="section">
+      <h2>Java Examples</h2>
+      <div class="search-box">
+        <input type="text" placeholder="Search Java..." onkeyup="search(this, 'java')" />
+      </div>
+
+      <div class="container">
+        <b>Example:</b> Hello World
+        <pre>public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello, World!");
+  }
+}</pre>
+        <button class="toggle-btn" onclick="toggleLogic(this)">Show Logic</button>
+        <div class="logic">Basic Java program that prints a message.</div>
+      </div>
+       <p>More codes comming soon...!</p>
+    </div>
+
+    <!-- CCNA -->
+    <div id="ccna" class="section">
+      <h2>CCNA Concepts</h2>
+      <div class="search-box">
+        <input type="text" placeholder="Search CCNA..." onkeyup="search(this, 'ccna')" />
+      </div>
+
+      <div class="container">
+        <b>Example 1:</b> What is IP Address?
+        <pre>An IP address is a unique identifier for a device on a network.</pre>
+        <button class="toggle-btn" onclick="toggleLogic(this)">Show Logic</button>
+        <div class="logic">Used to identify and communicate with devices on a network.</div>
+      </div>
+
+      <div class="container">
+        <b>Example 2:</b> TCP vs UDP
+        <pre>TCP: Reliable, connection-based
+UDP: Fast, no connection</pre>
+        <button class="toggle-btn" onclick="toggleLogic(this)">Show Logic</button>
+        <div class="logic">TCP guarantees delivery; UDP is faster but less reliable.</div>
+      </div>
+       <p>More notes comming soon...!</p>
+    </div>
+
+    <!-- Project -->
+    <div id="project" class="section">
+      <h2>Project Showcase</h2>
+      <div class="search-box">
+        <input type="text" placeholder="Search Projects..." onkeyup="search(this, 'project')" />
+      </div>
+
+      <div class="container">
+        <b>Project 1:</b> Student Management System
+
+        <p><strong>Code PDF:</strong></p>
+        <iframe src="appgame.pdf" width="100%" height="300px"></iframe>
+
+        <p><strong>Output Preview:</strong></p>
+        <img src="output_example.jpg" alt="Output">
+
+        <p><strong>Logic PDF:</strong></p>
+        <iframe src="game Logic.pdf" width="100%" height="300px"></iframe>
+
+      </div>
+      <p>More project comming soon...!</p>
+    </div>
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function toggleLogic(btn) {
+      const logic = btn.nextElementSibling;
+      logic.style.display = logic.style.display === 'block' ? 'none' : 'block';
+      btn.innerText = logic.style.display === 'block' ? 'Hide Logic' : 'Show Logic';
+    }
+
+    function search(input, sectionId) {
+      const term = input.value.toLowerCase();
+      const containers = document.querySelectorAll(`#${sectionId} .container`);
+      containers.forEach(container => {
+        const content = container.innerText.toLowerCase();
+        container.style.display = content.includes(term) ? 'block' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>
