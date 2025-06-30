@@ -1,37 +1,28 @@
-  function toggleLoginPopup() {
-    const popup = document.getElementById("login-popup");
-    popup.style.display = popup.style.display === "block" ? "none" : "block";
-  }
+function toggleLoginPopup() {
+  const popup = document.getElementById("login-popup");
+  popup.style.display = popup.style.display === "block" ? "none" : "block";
+}
 
-  function openDevLogin() {
-    toggleLoginPopup();
-    document.getElementById("dev-popup").style.display = "block";
-  }
+function openDevLogin() {
+  toggleLoginPopup();
+  document.getElementById("dev-popup").style.display = "block";
+}
 
-  function closeDevLogin() {
-    document.getElementById("dev-popup").style.display = "none";
-  }
+function closeDevLogin() {
+  document.getElementById("dev-popup").style.display = "none";
+}
 
-  function userLogin() {
-    alert("✅ User logged in!");
-  }
+function toggleDarkMode() {
+  document.body.classList.toggle("dark");
+}
 
-  function userLogout() {
-    alert("👋 User logged out!");
-  }
-
-  function verifyDev() {
-    const id = document.getElementById("devId").value;
-    const pass = document.getElementById("devPass").value;
-
-    if (id === "admin" && pass === "admin123") {
-      alert("✅ Developer access granted!");
-      window.location.href = "developer-dashboard.html";
-    } else {
-      alert("⚠️ You are not a developer.");
-    }
-  }
-
-  function toggleDarkMode() {
-    document.body.classList.toggle("dark");
-  }
+// Close sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+      if (
+        mobileNav.classList.contains('show') &&
+        !mobileNav.contains(e.target) &&
+        !menuIcon.contains(e.target)
+      ) {
+        mobileNav.classList.remove('show');
+      }
+    });
