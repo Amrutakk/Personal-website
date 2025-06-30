@@ -11,7 +11,6 @@
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
       color: #e0e0e0;
-
     }
 
     .topbar {
@@ -22,20 +21,35 @@
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 10;
+      z-index: 1000;
       font-size: 20px;
       font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .dots-button {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 26px;
+      cursor: pointer;
     }
 
     .sidebar {
       width: 220px;
       background: #212121;
       color: white;
-      height: 100vh;
-      padding-top: 80px;
+      height: calc(100vh - 80px);
+      padding-top: 20px;
       position: fixed;
-      top: 0;
+      top: 80px;
       left: 0;
+      transition: transform 0.3s ease;
+      z-index: 999;
     }
 
     .sidebar a {
@@ -133,25 +147,6 @@
       border-radius: 10px;
     }
 
-
-.password-container {
-  position: relative;
-  background: #121212;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 0 30px rgba(0, 234, 255, 0.4);
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-  color: white;
-  animation: scaleFade 0.5s ease;
-}
-
-@keyframes scaleFade {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
     .achievements-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -178,90 +173,60 @@
       object-fit: cover;
       border-radius: 10px;
       margin-bottom: 15px;
+      cursor: pointer;
     }
+
     #image-popup {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
 
-#image-popup img {
-  max-width: 90%;
-  max-height: 90%;
-  border: 4px solid white;
-  border-radius: 10px;
-  box-shadow: 0 0 20px #00eaff;
-  transition: 0.3s ease;
-  cursor: pointer;
-}
-.animated-popup {
-  animation: fadeSlide 0.7s ease;
-  background: #121212;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 0 30px rgba(0, 234, 255, 0.4);
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-  color: white;
-}
+    #image-popup img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 4px solid white;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00eaff;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
 
-@keyframes fadeSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-20px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.animated-btn {
-  margin: 10px 8px;
-  padding: 10px 20px;
-  font-size: 15px;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-}
-
-.animated-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 15px rgba(0, 234, 255, 0.5);
-}
-
-.animated-btn.blue {
-  background: #00eaff;
-  color: #000;
-}
-
-.animated-btn.green {
-  background: #25d366;
-  color: #fff;
-}
-
-
+    @media screen and (max-width: 768px) {
+      .dots-button {
+        display: block;
+      }
+      .sidebar {
+        transform: translateX(-240px);
+      }
+      .sidebar.active {
+        transform: translateX(0);
+      }
+      .main {
+        margin-left: 0;
+        margin-top: 80px;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-<div class="topbar">Just About my Achievements 🏆</div>
+<div class="topbar">
+  Just About my Achievements 🏆
+  <button class="dots-button" onclick="toggleSidebar()">⋮</button>
+</div>
 
-<div class="sidebar">
-  <a href="#" onclick="showSection('about')">👤 About Me</a>
-  <a href="#" onclick="showSection('certificates')">🎓 Certificates</a>
-  
-  <a href="#" onclick="showSection('achievements')">🏆 Achievements</a>
+<div class="sidebar" id="sidebar">
+  <a href="#" onclick="selectSection('about')">👤 About Me</a>
+  <a href="#" onclick="selectSection('certificates')">🎓 Certificates</a>
+  <a href="#" onclick="selectSection('achievements')">🏆 Achievements</a>
 </div>
 
 <div class="main">
@@ -277,15 +242,15 @@
         <a href="https://www.linkedin.com/in/amrutkiran-kshirsagar-85b80a2b3" target="_blank">
           <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
         </a>
-        <a href="https://github.com/amrutwq" target="_blank">
+        <a href="https://github.com/Amrutakk" target="_blank">
           <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
         </a>
         <a href="https://www.instagram.com/ak_amrutt" target="_blank">
           <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
         </a>
-         <a href="https://wa.me/919373799792" target="_blank">
-  <img src="https://cdn-icons-png.flaticon.com/512/220/220236.png" alt="WhatsApp" width="30" height="30">
-</a>
+        <a href="https://wa.me/919373799792" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/220/220236.png" alt="WhatsApp">
+        </a>
       </div>
     </div>
   </section>
@@ -296,25 +261,19 @@
       <img src="certificate1_img.jpg.png" alt="Certificate">
       <p>I have successfully completed my Python Programming course from Coding Seekho.</p>
     </div>
-
     <div class="cert-box">
       <img src="certificate2_img.jpg.png" alt="Certificate">
       <p>Completed Python Hackathon by Codtech IT Solutions.</p>
     </div>
-
     <div class="cert-box">
       <img src="certificate3_img.jpg.png" alt="Certificate">
       <p>Secured 3rd rank in National GK test organized by Bharati Vidyapeeth YMC College.</p>
     </div>
-
-     <div class="cert-box">
+    <div class="cert-box">
       <img src="certificate4_img.jpg.jpg" alt="Certificate">
-      <p>I have successfully completed my CCNA Networking course for VIT computer academy, Sangli.</p>
+      <p>I have successfully completed my CCNA Networking course from VIT computer academy, Sangli.</p>
     </div>
   </section>
-
-  
-
 
   <section id="achievements">
     <h2>🏆 Achievements</h2>
@@ -322,8 +281,8 @@
       <div id="image-popup" style="display:none;" onclick="closePopup()">
         <img id="popup-img" src="" alt="Full View">
       </div>
-      <div class="achievement-box"><img src="img14.png" alt=""><p>Senior Radiologist Dr.Shrinivas Natkar, Renowned dermatologist & Thertre artist Dr.Dayanand Naik & Gynecologist & 1st Ironwomen from sangli distrist Dr.Shilpa Date felicitated me for achieving national level achievement. </p></div>
-       <div class="achievement-box"><img src="img12.jpg" alt=""><p>Got general championship & Treasure hunt 1st prize in mancon 2024-25 (IMRDA).</p></div>
+      <div class="achievement-box"><img src="img14.png" alt=""><p>Senior Radiologist Dr.Shrinivas Natkar, Renowned dermatologist & Theatre artist Dr.Dayanand Naik & Gynecologist & 1st Ironwoman from Sangli district Dr.Shilpa Date felicitated me for achieving national level achievement.</p></div>
+      <div class="achievement-box"><img src="img12.jpg" alt=""><p>Got general championship & Treasure hunt 1st prize in Mancon 2024-25 (IMRDA).</p></div>
       <div class="achievement-box"><img src="img2.jpg" alt=""><p>Non shadow day organized by me & my team In IMRDA,Sangli </p></div>
       <div class="achievement-box"><img src="img3.jpg" alt=""><p>Felicitated to Software Team Guider on the occasion of job fair in IMRDA</p></div>
       <div class="achievement-box"><img src="img4.jpg" alt=""><p>Felicitated to our mam on the occasion of competiton of Coding (My role Team leader)</p></div>
@@ -336,21 +295,26 @@
       <div class="achievement-box"><img src="img11.jpg" alt=""><p>Me, my team ,3rd year student & teachers while taking all prizes</p></div>
      
       <div class="achievement-box"><img src="img13.jpg" alt=""><p>One Unforgettable moment while giving speech on the occasion of 3rd year student farewell</p></div>
-     
     </div>
   </section>
 </div>
 
 <script>
- 
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
 
+  function selectSection(id) {
+    showSection(id);
+    document.getElementById("sidebar").classList.remove("active");
+  }
 
   function showSection(id) {
     document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
 
-  const text = "Fullstack Java Developer  |  Networking (CCNA)  |  Python";
+  const text = "Fullstack Java Developer | Networking (CCNA) | Python";
   let idx = 0;
   function typeEffect() {
     if (idx <= text.length) {
@@ -360,32 +324,38 @@
     }
   }
   typeEffect();
-  // Image popup logic
-document.querySelectorAll(".achievement-box img").forEach(img => {
-  img.addEventListener("click", () => {
-    document.getElementById("popup-img").src = img.src;
-    document.getElementById("image-popup").style.display = "flex";
+
+  document.querySelectorAll(".achievement-box img").forEach(img => {
+    img.addEventListener("click", () => {
+      document.getElementById("popup-img").src = img.src;
+      document.getElementById("image-popup").style.display = "flex";
+    });
   });
-});
 
-function closePopup() {
-  document.getElementById("image-popup").style.display = "none";
-}
-// Disable right-click
-document.addEventListener("contextmenu", (e) => e.preventDefault());
-
-// Block common dev tools shortcuts
-document.onkeydown = function(e) {
-  if (e.key === "F12" || 
-     (e.ctrlKey && e.shiftKey && ["I", "C", "J"].includes(e.key)) ||
-     (e.ctrlKey && e.key === "U")) {
-    return false;
+  function closePopup() {
+    document.getElementById("image-popup").style.display = "none";
   }
-};
 
+  document.addEventListener("click", (e) => {
+    const sidebar = document.getElementById("sidebar");
+    const button = document.querySelector(".dots-button");
+    if (
+      sidebar.classList.contains("active") &&
+      !sidebar.contains(e.target) &&
+      !button.contains(e.target)
+    ) {
+      sidebar.classList.remove("active");
+    }
+  });
 
-
-
+  document.addEventListener("contextmenu", (e) => e.preventDefault());
+  document.onkeydown = function(e) {
+    if (e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["I", "C", "J"].includes(e.key)) ||
+        (e.ctrlKey && e.key === "U")) {
+      return false;
+    }
+  };
 </script>
 
 </body>
