@@ -201,7 +201,7 @@ header {
   margin: 8px 0;
 }
 
-/* Responsive */
+/* Responsive layout for sections */
 @media (max-width: 768px) {
   .about-container, .tagline-container {
     flex-direction: column;
@@ -211,6 +211,7 @@ header {
     max-width: 80%;
   }
 }
+
 .aboutme-btn {
   display: inline-flex;
   align-items: center;
@@ -235,4 +236,60 @@ header {
   background-color: #0061b0;
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(0, 78, 146, 0.4);
+}
+
+
+.mobile-nav-panel {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.mobile-nav-panel.show {
+  right: 0;
+}
+
+.mobile-nav-panel a {
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.mobile-nav-panel a:hover {
+  background: #444;
+}
+
+/* Only show hamburger icon on mobile */
+@media (max-width: 768px) {
+  .nav-buttons {
+    display: none;
+  }
+  .mobile-menu-icon {
+    display: block;
+    font-size: 28px;
+    color: #00bcd4;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+/* Only show nav buttons on desktop */
+@media (min-width: 769px) {
+  .mobile-menu-icon {
+    display: none;
+  }
+  .mobile-nav-panel {
+    display: none;
+  }
 }
