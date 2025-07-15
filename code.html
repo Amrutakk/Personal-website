@@ -185,92 +185,26 @@
 
   <div class="sidebar" id="sidebar">
     <h3>Sections</h3>
-    <button onclick="selectSection('python')"> Python</button>
-    <button onclick="selectSection('java')"> Java</button>
     <button onclick="selectSection('project')"> Projects</button>
-    <button onclick="selectSection('ccna')"> CCNA</button>
+    <button onclick="selectSection('ccna')"> Networking projects</button>
   </div>
 
   <div class="main-content" id="mainContent">
 
-    <!-- Python -->
-    <div id="python" class="section active">
-      <h2>Python Examples</h2>
-      <div class="search-box">
-        <input type="text" placeholder="Search Python..." onkeyup="search(this, 'python')" />
-      </div>
-
-      <div class="container">
-        <b>Example 1:</b> Print right-angle triangle
-        <pre>for i in range(5):
-  for j in range(i+1):
-    print("*", end=" ")
-  print()</pre>
-        <button class="toggle-btn" onclick="toggleLogic(this)">Show Logic</button>
-        <div class="logic">Nested loops print increasing number of stars.</div>
-        <div class="output">Output:<br>*<br>* *<br>* * *<br>* * * *<br>* * * * *</div>
-      </div>
-
-      <div class="container">
-        <b>Example 2:</b> Fibonacci series
-        <pre>a, b = 0, 1
-for _ in range(5):
-  print(a, end=" ")
-  a, b = b, a + b</pre>
-        <button class="toggle-btn" onclick="toggleLogic(this)">Show Logic</button>
-        <div class="logic">Prints first 5 Fibonacci numbers using loop & swapping.</div>
-        <div class="output">Output: 0 1 1 2 3</div>
-      </div>
-       <p>More codes comming soon...!</p>
-    </div>
-
-    <!-- Java -->
-    <div id="java" class="section">
-      <h2>Java Examples</h2>
-      <div class="search-box">
-        <input type="text" placeholder="Search Java..." onkeyup="search(this, 'java')" />
-      </div>
-
-      <div class="container">
-        <b>Example:</b> Hello World
-        <pre>public class Main {
-  public static void main(String[] args) {
-    System.out.println("Hello, World!");
-  }
-}</pre>
-        <button class="toggle-btn" onclick="toggleLogic(this)">Show Logic</button>
-        <div class="logic">Basic Java program that prints a message.</div>
-      </div>
-       <p>More codes comming soon...!</p>
-    </div>
-
     <!-- CCNA -->
     <div id="ccna" class="section">
-      <h2>CCNA Concepts</h2>
+      <h2>NETWORKING PROJECTS SHOWCASE.</h2>
       <div class="search-box">
         <input type="text" placeholder="Search CCNA..." onkeyup="search(this, 'ccna')" />
       </div>
 
-      <div class="container">
-        <b>Example 1:</b> What is IP Address?
-        <pre>An IP address is a unique identifier for a device on a network.</pre>
-        <button class="toggle-btn" onclick="toggleLogic(this)">Show Logic</button>
-        <div class="logic">Used to identify and communicate with devices on a network.</div>
-      </div>
-
-      <div class="container">
-        <b>Example 2:</b> TCP vs UDP
-        <pre>TCP: Reliable, connection-based
-UDP: Fast, no connection</pre>
-        <button class="toggle-btn" onclick="toggleLogic(this)">Show Logic</button>
-        <div class="logic">TCP guarantees delivery; UDP is faster but less reliable.</div>
-      </div>
-       <p>More notes comming soon...!</p>
+      
+       <p>Project comming soon...!</p>
     </div>
 
     <!-- Project -->
     <div id="project" class="section">
-      <h2>Project Showcase</h2>
+      <h2>PROJECT SHOWCASE</h2>
       <div class="search-box">
         <input type="text" placeholder="Search Projects..." onkeyup="search(this, 'project')" />
       </div>
