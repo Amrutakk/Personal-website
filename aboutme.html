@@ -80,28 +80,30 @@
       display: block;
     }
 
-    .photo {
+    /* NEW - About container styling */
+    .about-card {
+      background: #1e1e1e;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 15px;
       text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.7);
       animation: fadeInZoom 1.2s ease;
     }
 
-    @keyframes fadeInZoom {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    .photo img {
-      width: 200px;
-      height: 200px;
+    .about-card img {
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid #00eaff;
-      margin-top: 10px;
+      margin-bottom: 20px;
     }
 
-    .info {
-      text-align: center;
-      margin-top: 20px;
+    .about-card h2 {
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
 
     .typing {
@@ -109,17 +111,37 @@
       font-weight: 500;
       font-size: 18px;
       height: 24px;
+      margin-bottom: 15px;
     }
 
-    .social-icons a {
-      margin: 10px;
-      display: inline-block;
+    .about-card p {
+      margin: 5px 0;
+      font-size: 16px;
     }
 
-    .social-icons img {
+    .about-card .social-icons {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .about-card .social-icons img {
       width: 30px;
       height: 30px;
       filter: brightness(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .about-card .social-icons img:hover {
+      transform: scale(1.2);
+      filter: brightness(150%);
+    }
+
+    @keyframes fadeInZoom {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     .cert-box {
@@ -213,6 +235,11 @@
         margin-top: 80px;
         padding: 20px;
       }
+
+      .about-card {
+        width: 90%;
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -231,13 +258,12 @@
 
 <div class="main">
   <section id="about" class="active">
-    <div class="photo">
+    <div class="about-card">
       <img src="amrut_img.jpg" alt="Amrut">
-    </div>
-    <div class="info">
       <h2>Amrutkiran Kshirsagar</h2>
       <p class="typing" id="typing-text"></p>
-      <p>📧 amrutkirankshirsagar01@gmail.com | 📲 9373799792</p>
+      <p>📧 amrutkirankshirsagar01@gmail.com</p>
+      <p>📲 9373799792</p>
       <div class="social-icons">
         <a href="https://www.linkedin.com/in/amrutkiran-kshirsagar-85b80a2b3" target="_blank">
           <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
@@ -293,7 +319,6 @@
       <div class="achievement-box"><img src="img9.jpg" alt=""><p>Congratulation of 3rd year BCA student for getting 2rank in Bharati Youth Festival 2024 (My role is CR of 3rd year,IMRDA) </p></div>
       <div class="achievement-box"><img src="img10.jpg" alt=""><p>Congratulation of 3rd year BBA student for getting 2rank in Bharati Youth Festival 2024 (My role is CR of 3rd year,IMRDA) </p></div>
       <div class="achievement-box"><img src="img11.jpg" alt=""><p>Me, my team ,3rd year student & teachers while taking all prizes</p></div>
-     
       <div class="achievement-box"><img src="img13.jpg" alt=""><p>One Unforgettable moment while giving speech on the occasion of 3rd year student farewell</p></div>
     </div>
   </section>
