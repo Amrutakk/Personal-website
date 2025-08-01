@@ -241,6 +241,77 @@
         padding: 20px;
       }
     }
+
+
+
+     /* Resume Popup Styling */
+    #resume-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .popup-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    .popup-box input {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    .popup-buttons button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .contact-buttons {
+      margin-top: 10px;
+    }
+    .contact-buttons a {
+      display: block;
+      margin: 5px 0;
+      color: #007bff;
+      text-decoration: none;
+    }
+    .contact-buttons a:hover {
+      text-decoration: underline;
+    }
+    .content {
+      margin-left: 200px;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .content {
+      margin-left: 200px;
+      padding: 20px;
+      width: 100%;
+    }
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
   </style>
 </head>
 <body>
@@ -254,7 +325,12 @@
   <a href="#" onclick="selectSection('about')">👤 About Me</a>
   <a href="#" onclick="selectSection('certificates')">🎓 Certificates</a>
   <a href="#" onclick="selectSection('achievements')">🏆 Achievements</a>
+  <a href="#" onclick="showResumePopup()">📄 My Resume</a>
 </div>
+<section id="resume">
+    <h2>📄 My Resume</h2>
+    <iframe src="Amrut_resume.pdf"></iframe>
+  </section>
 
 <div class="main">
   <section id="about" class="active">
@@ -307,6 +383,7 @@
       <div id="image-popup" style="display:none;" onclick="closePopup()">
         <img id="popup-img" src="" alt="Full View">
       </div>
+      <div class="achievement-box"><img src="Degree_certificate.jpg" alt=""><p>🎓 I take great pride in sharing that I have successfully completed my graduation with an 🅰️ grade from IMRDA, Sangli. This achievement marks a chapter filled with dedication, learning 📚, and personal growth 🌱.</p></div>
       <div class="achievement-box"><img src="img14.png" alt=""><p>Senior Radiologist Dr.Shrinivas Natkar, Renowned dermatologist & Theatre artist Dr.Dayanand Naik & Gynecologist & 1st Ironwoman from Sangli district Dr.Shilpa Date felicitated me for achieving national level achievement.</p></div>
       <div class="achievement-box"><img src="img12.jpg" alt=""><p>Got general championship & Treasure hunt 1st prize in Mancon 2024-25 (IMRDA).</p></div>
       <div class="achievement-box"><img src="img2.jpg" alt=""><p>Non shadow day organized by me & my team In IMRDA,Sangli </p></div>
@@ -314,14 +391,36 @@
       <div class="achievement-box"><img src="img4.jpg" alt=""><p>Felicitated to our mam on the occasion of competiton of Coding (My role Team leader)</p></div>
       <div class="achievement-box"><img src="img5.jpg" alt=""><p>Secured 1st rank In Mancon 2024-25 IMRDA,sangli (My role Team leader)</p></div>
       <div class="achievement-box"><img src="img6.jpg" alt=""><p>Felicitated to Prof.Sahastrabuddhye mam on the occasion of Chandrayan 3 event (My role Team leader) </p></div>
-      <div class="achievement-box"><img src="img7.jpg" alt=""><p>One golden moment while giving Information about Chandrayan 3.</p></div>
-      <div class="achievement-box"><img src="img8.jpg" alt=""><p>One golden moment while giving Information about Chandrayan 3</p></div>
+    
       <div class="achievement-box"><img src="img9.jpg" alt=""><p>Congratulation of 3rd year BCA student for getting 2rank in Bharati Youth Festival 2024 (My role is CR of 3rd year,IMRDA) </p></div>
       <div class="achievement-box"><img src="img10.jpg" alt=""><p>Congratulation of 3rd year BBA student for getting 2rank in Bharati Youth Festival 2024 (My role is CR of 3rd year,IMRDA) </p></div>
       <div class="achievement-box"><img src="img11.jpg" alt=""><p>Me, my team ,3rd year student & teachers while taking all prizes</p></div>
       <div class="achievement-box"><img src="img13.jpg" alt=""><p>One Unforgettable moment while giving speech on the occasion of 3rd year student farewell</p></div>
     </div>
   </section>
+
+
+  <section id="resume" style="display: none;">
+  <h2>📄 My Resume</h2>
+  <iframe src="amrut_resume.pdf"></iframe>
+</section>
+
+  
+<!-- Password Popup -->
+<div id="resume-popup">
+  <div class="popup-box">
+    <h3>🔒 Enter Resume Password</h3>
+    <input type="password" id="resume-password" placeholder="Password">
+    <div class="popup-buttons">
+      <button onclick="checkResumePassword()">OK</button>
+      <button onclick="closeResumePopup()">Cancel</button>
+    </div>
+    <div class="contact-buttons">
+      <a href="mailto:amrutkirankshirsagar01@gmail.com?subject=Requesting%20Resume%20Password" target="_blank">📩 Email me for Password</a>
+      <a href="https://wa.me/919373799792?text=Hi%20Amrut,%20please%20share%20the%20resume%20password." target="_blank">💬 WhatsApp me for Password</a>
+    </div>
+    <p id="resume-error" style="color: red;"></p>
+  </div>
 </div>
 
 <script>
@@ -373,14 +472,45 @@
     }
   });
 
-  document.addEventListener("contextmenu", (e) => e.preventDefault());
-  document.onkeydown = function(e) {
-    if (e.key === "F12" ||
-        (e.ctrlKey && e.shiftKey && ["I", "C", "J"].includes(e.key)) ||
-        (e.ctrlKey && e.key === "U")) {
-      return false;
+function showSection(sectionId) {
+    const sections = document.querySelectorAll("section");
+    sections.forEach(sec => sec.classList.remove("active"));
+    document.getElementById(sectionId).classList.add("active");
+  }
+
+  // Resume popup logic
+  let resumeAttempts = 0;
+  const resumePassword = "Amrut@123";
+
+  function showResumePopup() {
+    if (resumeAttempts >= 3) {
+      alert("❌ Access Denied! Too many wrong attempts.");
+      return;
     }
-  };
+    document.getElementById("resume-popup").style.display = "flex";
+    document.getElementById("resume-password").value = "";
+    document.getElementById("resume-error").innerText = "";
+  }
+
+  function closeResumePopup() {
+    document.getElementById("resume-popup").style.display = "none";
+  }
+
+  function checkResumePassword() {
+    const input = document.getElementById("resume-password").value;
+    if (input === resumePassword) {
+      closeResumePopup();
+      showSection('resume');
+    } else {
+      resumeAttempts++;
+      const remaining = 3 - resumeAttempts;
+      if (remaining <= 0) {
+        document.getElementById("resume-error").innerText = "❌ Access denied. Try later.";
+      } else {
+        document.getElementById("resume-error").innerText = `❌ Wrong password. ${remaining} attempt(s) left.`;
+      }
+    }
+  }  
 </script>
 
 </body>
